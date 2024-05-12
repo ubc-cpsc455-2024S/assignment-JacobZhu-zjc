@@ -5,7 +5,33 @@ html, body {
     font-size: medium;
 }
 
-.outerspacer {
+.outer_spacer {
     margin-left: 5%;
     margin-right: 5%;
+}
+
+.flex_container {
+    width: 100%;
+    min-height: 5%;
+    padding: 1%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: antiquewhite;
+}
+
+.team_card {
+    max-width: 12%;
+    max-height: 18%;
+    padding: 2%;
+    border: 1px solid black;
+    display: inline-block;
+    text-align: center;
+    font-size: small;
+}
+
+.team_card img {
+    max-width: 100%;
+    max-height: 100%;
+    border: 1px solid black;
 }

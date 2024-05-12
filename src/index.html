@@ -12,16 +12,16 @@
         <li><a href="./manage.html">Manage Team</a></li>
         <li><a href="./about.html">About Me</a></li>
     </ul>
-    <div class="outerspacer">
+    <div class="outer_spacer">
         <h1>Team Builder</h1>
         <p>
             Welcome to my implementation for Assignment 1 of CPSC 455! This webpage is a quick tool for building teams for sports or trading-card games, with the main editing functionality located on the <a href="./manage.html">Manage Teams</a> page. Displayed below is your current team! Assuming you have not visited the site before, this would be comprised of a pre-loaded set of team members, for which I have chosen several animals with corresponding photos from Wikipedia (used with a Creactive Commons licence).
         </p><br>
 
         <h3>Your Team:</h3>
-        <button onclick="TODO:">Show</button>
-        <button onclick="TODO:">Hide</button>
-        <div id="flex-teamdisplay"></div>
+        <button onclick="showTeamMembers('index_display')">Show</button>
+        <button onclick="hideTeamMembers('index_display')">Hide</button>
+        <div class="flex_container" id="index_display"></div>
     </div>
 </body>
 </html>
