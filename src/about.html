@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me - Assignment 1</title>
     <link rel="stylesheet" href="../styles/general.css">
-    <link rel="stylesheet" href="../styles/about.css">
-    <script src="./api/scripts.js"></script>
 </head>
 <body>
-
-
-
+    <ul class="navbar">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./manage.html">Manage Team</a></li>
+        <li><a href="./about.html">About Me</a></li>
+    </ul>
+    <div class="outer_spacer">
+        <h1>About Me!</h1>
+        <p>
+            Hi! My name is Jacob, and I'm currently a 3rd-year BSc. student at UBC, specializing in CPSC. I enjoy working on various projects and learning more about cool technologies available in CS! In my spare time, I enjoy watching travel videos, indoor bouldering, and juggling! You can reach me at foo@bar.com.
+        </p>
+        <p>
+            This project is my submission for Assignment 1 of CPSC 455, which is a simple website built using Vanilla HTML, CSS, and JS. As per requirements, every page has a navbar, and loads CSS and JS from external files. Additionally, the site is built to be responsive through the use of &ltmeta&gt tags and media queries, as well as flex containers for displaying team member cards. Additionally, there is a JSON string used initialize the starting team members, as well as list used to store team members (shared across pages using <emph>sessionStorage</emph>). One interesting thing I tried to implement was the dynamic setting of a card's background colour, based on the average colour of the corresponding member's photo!
+        </p>
+    </div>
 </body>
 </html>

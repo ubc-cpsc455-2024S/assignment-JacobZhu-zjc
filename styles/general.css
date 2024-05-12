@@ -5,33 +5,37 @@ html, body {
     font-size: medium;
 }
 
+p {
+    line-height: 1.5em;
+    margin-bottom: 2%;
+}
+
 .outer_spacer {
     margin-left: 5%;
     margin-right: 5%;
 }
 
-.flex_container {
-    width: 100%;
-    min-height: 5%;
-    padding: 1%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    background-color: antiquewhite;
+/* Navbar CSS adapted using sections from W3Schools, link: https://www.w3schools.com/css/css_navbar_horizontal.asp */
+.navbar {
+    margin: 0;
+    padding-left: 3%;
+    list-style-type: none;
+    overflow: hidden;
+    background-color: rgb(255, 245, 203);
 }
 
-.team_card {
-    max-width: 12%;
-    max-height: 18%;
-    padding: 2%;
-    border: 1px solid black;
-    display: inline-block;
+.navbar li {
+    display: block;
+    float: left;
+    padding: 1% 1.5%;
     text-align: center;
-    font-size: small;
 }
 
-.team_card img {
-    max-width: 100%;
-    max-height: 100%;
-    border: 1px solid black;
+.navbar a {
+    color: black;
+    text-decoration: none;
+}
+
+.navbar li:hover {
+    background-color: rgb(255, 239, 177);
 }

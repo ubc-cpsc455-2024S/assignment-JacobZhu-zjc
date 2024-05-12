@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Assignment 1</title>
+    <link rel="stylesheet" href="../styles/general.css">
+    <link rel="stylesheet" href="../styles/team_display.css">
+    <script src="./scripts/setup.js"></script>
+    <script src="./scripts/image_lib.js"></script>
+</head>
+<body>
+    <ul class="navbar">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./manage.html">Manage Team</a></li>
+        <li><a href="./about.html">About Me</a></li>
+    </ul>
+    <div class="outer_spacer">
+        <h1>Manage Teams</h1>
+
+        <button onclick="showTeamMembers('manage_display')">Show</button>
+        <button onclick="hideTeamMembers('manage_display')">Hide</button>
+        <div class="flex_container" id="manage_display"></div>
+    </div>
+
+    <script>
+        initializeTeam();
+    </script>
+</body>
+</html>
