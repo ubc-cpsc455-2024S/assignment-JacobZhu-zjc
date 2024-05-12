@@ -25,13 +25,13 @@ p {
 }
 
 .navbar li {
-    display: block;
     float: left;
-    padding: 1% 1.5%;
-    text-align: center;
 }
 
 .navbar a {
+    padding: 1em 2em;
+    display: block;
+    text-align: center;
     color: black;
     text-decoration: none;
 }

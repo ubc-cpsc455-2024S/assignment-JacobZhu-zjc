@@ -1,4 +1,3 @@
-// TODO: move the setBackgroundColour call to an onload method, and store the average colour somehow
 // Showing the list of team members in a given container div, given the div id
 function showTeamMembers(id) {
     const team = JSON.parse(sessionStorage.getItem("team"))["team members"];
@@ -14,14 +13,13 @@ function showTeamMembers(id) {
         toAdd += "<p>No members in team!</p>"
     } else {
         for (const member of team) {
-            // let r = member.avgColour.r, g = member.avgColour.g, b = member.avgColour.b;
-            toAdd += '<div class="team_card">';
+            let r = member.avgColour.r, g = member.avgColour.g, b = member.avgColour.b;
+            toAdd += '<div class="team_card" style="background-color: rgb(' + r + ',' + g + ',' + b + '); color: ' + getTextColour(member.avgColour) + ';">';
             toAdd += member.name + "<br><br>";
             toAdd += member.description + "<br><br>";
             toAdd += "Age: " + member.age + "<br><br>";
             toAdd += "<img src=" + member.image + ">";
             toAdd += "</div>";
-            setBackgroundColour(member.image);
         }
     }
 
@@ -34,24 +32,24 @@ function hideTeamMembers(id) {
     container.innerHTML = "";
 }
 
-// Given an image url, sets the avgColour field of the corresponding member object in sessionStorage
-function setBackgroundColour(imageURL) {
+// Given an image url, returns a Promise that fulfills with the average colour of the image
+async function getBackgroundColour(imageURL) {
     let image = new Image();
     image.src = imageURL;
     image.crossOrigin = "Anonymous";
 
-    let avgColour;
-    let textColour;
-
-    // Waiting for the image to load from the external website(s) before attempting to calculate the average colour
-    image.onload = function () {
-        avgColour = getAverageColour(image);
-        textColour = getTextColour(avgColour.r, avgColour.g, avgColour.b);
-
-        const outerDivElement = document.querySelector('img[src="' + imageURL + '"]').closest("div");
-        outerDivElement.setAttribute("style", 'background-color: rgb(' + avgColour.r + ','
-            + avgColour.g + ',' + avgColour.b + '); color: ' + textColour + ';');
-    };
+    // Wrapping the async call to image.onload in a Promise
+    return new Promise((resolve, reject) => {
+        // Waiting for the image to load from the external website(s) before attempting to calculate the average colour
+        image.onload = async function () {
+            let avgColour = getAverageColour(image);
+            if (avgColour) {
+                resolve(avgColour);
+            } else {
+                reject(avgColour);
+            }
+        };
+    });
 }
 
 // Helper function to calculate the average colour of an image, given the corresponding HTML element
@@ -84,8 +82,8 @@ function getAverageColour(img) {
 
 // Dynamically setting the colour of text, given the background colour, so that visibility is maintained
 // Theshold value of 186 obtained from https://stackoverflow.com/questions/3942878/how-to-decide-font-color-in-white-or-black-depending-on-background-color
-function getTextColour(r, g, b) {
-    if (r * 0.299 + g * 0.587 + b * 0.114 > 186) {
+function getTextColour(avgColour) {
+    if (avgColour.r * 0.299 + avgColour.g * 0.587 + avgColour.b * 0.114 > 186) {
         return "black";
     } else {
         return "white";
