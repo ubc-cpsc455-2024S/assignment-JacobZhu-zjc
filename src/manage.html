@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Assignment 1</title>
+    <title>Manage Teams - Assignment 1</title>
     <link rel="stylesheet" href="../styles/general.css">
+    <link rel="stylesheet" href="../styles/input_form.css">
     <link rel="stylesheet" href="../styles/team_display.css">
     <script src="./scripts/setup.js"></script>
     <script src="./scripts/image_lib.js"></script>
+    <script src="./scripts/manage_lib.js"></script>
 </head>
 <body>
     <ul class="navbar">
@@ -18,12 +20,40 @@
     <div class="outer_spacer">
         <h1>Manage Teams</h1>
 
+        <div id="menu">
+            <div class="leftdiv">
+                <h3>Add a New Team Member!</h3>
+                <form>
+                    <label for="new_member_name">Name:</label><br>
+                    <input type="text" id="new_member_name" required><br>
+                    <label for="new_member_description">Description:</label><br>
+                    <textarea id="new_member_description" cols="40" rows="5"></textarea><br>
+                    <label for="new_member_age">Age:</label><br>
+                    <input type="number" step="1" id="new_member_age"><br>
+                    <!-- <label for="new_member_image">Image:</label><br> -->
+                    <!-- <input type="file" id="new_member_image" accept="image/*"><br> -->
+                    <label for="new_member_image_link">Image Link:</label><br>
+                    <input type="text" id="new_member_image_link"><br>
+                    <input type="submit" value="Add Member" onclick="createMember()"><br>
+                </form>
+                <div id="error_message"></div>
+            </div>
+            
+            <!-- TODO: live updating? -->
+            <div class="rightdiv">
+                <h3>Card Preview:</h3>
+            </div>
+        </div>
+
+        <hr>
+
         <button onclick="showTeamMembers('manage_display')">Show</button>
         <button onclick="hideTeamMembers('manage_display')">Hide</button>
         <div class="flex_container" id="manage_display"></div>
     </div>
 
     <script>
+        // Another call to the setup function, in case you visit this page before the homepage
         initializeTeam();
     </script>
 </body>

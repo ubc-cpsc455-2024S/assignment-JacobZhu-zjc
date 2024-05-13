@@ -1,10 +1,11 @@
 /* CSS styling for the flex container and cards used to display team members */
 button {
+    margin-top: 0.5%;
     margin-bottom: 0.5%;
 }
 
 .flex_container {
-    width: 100%;
+    width: 98%;
     min-height: 5%;
     padding: 1%;
     display: flex;

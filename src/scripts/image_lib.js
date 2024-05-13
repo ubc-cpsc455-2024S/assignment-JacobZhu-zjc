@@ -3,24 +3,26 @@ function showTeamMembers(id) {
     const team = JSON.parse(sessionStorage.getItem("team"))["team members"];
     const container = document.getElementById(id);
 
-    // Short-circuiting if you press "Show" multiple times in a row
-    if (container.innerHTML !== "") {
-        return;
-    }
-
+    // Default case if there are no members in a team
     let toAdd = "";
     if (team.length === 0) { 
         toAdd += "<p>No members in team!</p>"
-    } else {
-        for (const member of team) {
-            let r = member.avgColour.r, g = member.avgColour.g, b = member.avgColour.b;
-            toAdd += '<div class="team_card" style="background-color: rgb(' + r + ',' + g + ',' + b + '); color: ' + getTextColour(member.avgColour) + ';">';
-            toAdd += member.name + "<br><br>";
-            toAdd += member.description + "<br><br>";
-            toAdd += "Age: " + member.age + "<br><br>";
+        container.innerHTML = toAdd;
+        return;
+    }
+
+    for (const member of team) {
+        let r = member.avgColour.r, g = member.avgColour.g, b = member.avgColour.b;
+        toAdd += '<div class="team_card" style="background-color: rgb(' + r + ',' + g + ',' + b + '); color: ' + getTextColour(member.avgColour) + ';">';
+        toAdd += member.name + "<br><br>";
+        toAdd += member.description + "<br><br>";
+        toAdd += "Age: " + member.age + "<br><br>";
+        if (member.image !== "") {
             toAdd += "<img src=" + member.image + ">";
-            toAdd += "</div>";
+        } else {
+            toAdd += "<emph>No image included</emph>"
         }
+        toAdd += "</div>";
     }
 
     container.innerHTML = toAdd;

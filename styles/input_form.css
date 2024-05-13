@@ -1,0 +1,32 @@
+input, textarea {
+    margin-top: 0.3%;
+    margin-bottom: 0.5%;
+    display: inline-block;
+}
+
+#menu {
+    padding: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+    border-radius: 1em;
+    background-color: beige;
+}
+
+#error_message {
+    color: red;
+    font-size: small;
+    font-weight: bold;
+}
+
+.leftdiv {
+    max-width: 49%;
+    display: inline-block;
+}
+
+.rightdiv {
+    max-width: 49%;
+    display: inline-block;
+    text-align: center;
+}
