@@ -14,13 +14,13 @@ function showTeamMembers(id) {
     for (const member of team) {
         let r = member.avgColour.r, g = member.avgColour.g, b = member.avgColour.b;
         toAdd += '<div class="team_card" style="background-color: rgb(' + r + ',' + g + ',' + b + '); color: ' + getTextColour(member.avgColour) + ';">';
-        toAdd += member.name + "<br><br>";
+        toAdd += "<strong>" + member.name + "</strong><br><br>";
         toAdd += member.description + "<br><br>";
         toAdd += "Age: " + member.age + "<br><br>";
         if (member.image !== "") {
             toAdd += "<img src=" + member.image + ">";
         } else {
-            toAdd += "<em>No image included</em>"
+            toAdd += "<em>No image included</em>";
         }
         toAdd += "</div>";
     }

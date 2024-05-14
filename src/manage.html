@@ -21,26 +21,26 @@
         <h1>Manage Teams</h1>
 
         <div id="menu">
-            <div class="leftdiv">
+            <div class="left_div">
                 <h3>Add a New Team Member!</h3>
                 <form id="new_member_form">
                     <label for="new_member_name">Name:</label><br>
-                    <input type="text" id="new_member_name" required><br>
+                    <input type="text" onblur="updatePreview()" id="new_member_name" required><br>
                     <label for="new_member_description">Description:</label><br>
-                    <textarea id="new_member_description" cols="40" rows="5"></textarea><br>
+                    <textarea onblur="updatePreview()" id="new_member_description" cols="40" rows="5"></textarea><br>
                     <label for="new_member_age">Age:</label><br>
-                    <input type="number" step="1" min="0" id="new_member_age"><br>
+                    <input type="number" step="1" min="0" onblur="updatePreview()" id="new_member_age"><br>
                     <label for="new_member_image_link">Image Link:</label><br>
-                    <input type="text" id="new_member_image_link"><br>
-                    <input type="button" value="Add Member" onclick="attemptAdd('manage_display')">
+                    <input type="text" onblur="updatePreview()" id="new_member_image_link"><br>
+                    <input type="button" value="Add Member" onclick="createMember('manage_display')">
                     <input type="button" value="Clear" onclick="clearInputs()"><br>
                 </form>
                 <div id="error_message"></div>
             </div>
             
-            <!-- TODO: live updating? -->
-            <div class="rightdiv">
+            <div class="right_div">
                 <h3>Card Preview:</h3>
+                <div id="preview_div"></div>
             </div>
         </div>
 

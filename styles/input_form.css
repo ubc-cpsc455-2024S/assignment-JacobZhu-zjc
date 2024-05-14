@@ -21,12 +21,12 @@ input, textarea {
     font-weight: bold;
 }
 
-.leftdiv {
+.left_div {
     max-width: 49%;
     display: inline-block;
 }
 
-.rightdiv {
+.right_div {
     max-width: 49%;
     display: inline-block;
     text-align: center;
