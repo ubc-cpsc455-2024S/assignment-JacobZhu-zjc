@@ -29,12 +29,11 @@
                     <label for="new_member_description">Description:</label><br>
                     <textarea id="new_member_description" cols="40" rows="5"></textarea><br>
                     <label for="new_member_age">Age:</label><br>
-                    <input type="number" step="1" id="new_member_age"><br>
-                    <!-- <label for="new_member_image">Image:</label><br> -->
-                    <!-- <input type="file" id="new_member_image" accept="image/*"><br> -->
+                    <input type="number" step="1" min="0" id="new_member_age"><br>
                     <label for="new_member_image_link">Image Link:</label><br>
                     <input type="text" id="new_member_image_link"><br>
-                    <input type="submit" value="Add Member" onclick="createMember()"><br>
+                    <input type="submit" value="Add Member" onclick="createMember('manage_display');">
+                    <input type="button" value="Clear" onclick="clearInputs()"><br>
                 </form>
                 <div id="error_message"></div>
             </div>
@@ -49,6 +48,7 @@
 
         <button onclick="showTeamMembers('manage_display')">Show</button>
         <button onclick="hideTeamMembers('manage_display')">Hide</button>
+        <button onclick="deleteAll('manage_display')" class="delete_button">Delete all team members</button>
         <div class="flex_container" id="manage_display"></div>
     </div>
 

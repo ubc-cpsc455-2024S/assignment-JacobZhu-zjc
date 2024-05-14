@@ -20,7 +20,7 @@ function showTeamMembers(id) {
         if (member.image !== "") {
             toAdd += "<img src=" + member.image + ">";
         } else {
-            toAdd += "<emph>No image included</emph>"
+            toAdd += "<em>No image included</em>"
         }
         toAdd += "</div>";
     }
