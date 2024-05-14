@@ -1,19 +1,22 @@
+// Function to check form validity before attempting to create a new teammate
+async function attemptAdd(id) {
+    const form = document.getElementById('new_member_form');
+    if (form.checkValidity()) {
+        createMember('manage_display');
+    } else {
+        form.reportValidity();
+    }
+}
+
 // Function for creating a teammate
 async function createMember(id) {
     // Pulling data from the corresponding <input> elements
     const name = document.getElementById("new_member_name").value;
-    if (name === "") {
-        return;
-    }
     const description = parseDescription();
     const age = parseAge();
-    if (age.data < 0) {
-        return;
-    }
     const image = await parseImage();
 
     // Editing error message if any fields are incomplete
-    // FIXME: error message quickly disappears after it shows up, and the call to showTeamMembers(id) doesn't work
     // TODO: add confirmation button and queue in sessionStorage for incomplete teammmates?
     if (!description.isComplete || !age.isComplete || !image.isComplete) {
         let errorMessage = "<p>Note: Your team member was missing the following fields:</p>";
@@ -90,4 +93,10 @@ function deleteAll(id) {
     team["team members"] = [];
     sessionStorage.setItem("team", JSON.stringify(team));
     showTeamMembers(id);
+}
+
+// Restores the starting teammates in sessionStorage
+function resetSession() {
+    sessionStorage.removeItem("team");
+    initializeTeam();
 }
