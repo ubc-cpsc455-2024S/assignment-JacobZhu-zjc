@@ -14,8 +14,8 @@ function showTeamMembers(id) {
     for (const member of team) {
         let r = member.avgColour.r, g = member.avgColour.g, b = member.avgColour.b;
         toAdd += '<div class="team_card" style="background-color: rgb(' + r + ',' + g + ',' + b + '); color: ' + getTextColour(member.avgColour) + ';">';
-        toAdd += "<strong>" + member.name + "</strong><br><br>";
-        toAdd += member.description + "<br><br>";
+        toAdd += "<strong>" + member.name + "</strong><p>";
+        toAdd += member.description + "</p><br>";
         toAdd += "Age: " + member.age + "<br><br>";
         if (member.image !== "") {
             toAdd += "<img src=" + member.image + ">";
@@ -26,6 +26,11 @@ function showTeamMembers(id) {
     }
 
     container.innerHTML = toAdd;
+
+    // Adding delete buttons to each card in the 'manage' screen
+    if (id === "manage_display") {
+        addDeleteButtons(id);
+    }
 }
 
 // Hiding the list of team members in a given container div, given the div id
@@ -89,5 +94,17 @@ function getTextColour(avgColour) {
         return "black";
     } else {
         return "white";
+    }
+}
+
+// Function to add delete buttons to each card in the given container div
+function addDeleteButtons(id) {
+    const container = document.getElementById(id);
+    const teamCards = container.children;
+
+    // Inserting the HTML for the button into each card
+    for (let i = 0; i < teamCards.length; i++) {
+        const buttonHTML = '<button class="delete_card_button" onclick="deleteCard(' + i + `, '` + id + `')" id="` + i + '">&#x2715</button>';
+        teamCards[i].innerHTML = buttonHTML + teamCards[i].innerHTML;
     }
 }

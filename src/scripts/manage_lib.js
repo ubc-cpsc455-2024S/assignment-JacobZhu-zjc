@@ -20,6 +20,7 @@ async function createMember(id) {
         "avgColour": image.backgroundColour
     });
     sessionStorage.setItem("team", JSON.stringify(team));
+    clearInputs();
     showTeamMembers(id);
 }
 
@@ -131,10 +132,12 @@ function clearInputs() {
     document.getElementById("new_member_description").value = "";
     document.getElementById("new_member_age").value = "";
     document.getElementById("new_member_image_link").value = "";
+
     const preview = document.getElementById("preview_div");
     preview.innerHTML = "";
     preview.removeAttribute("class");
     preview.removeAttribute("style");
+    
     document.getElementById("error_message").innerHTML = "";
 }
 
@@ -142,6 +145,14 @@ function clearInputs() {
 function deleteAll(id) {
     let team = JSON.parse(sessionStorage.getItem("team"));
     team["team members"] = [];
+    sessionStorage.setItem("team", JSON.stringify(team));
+    showTeamMembers(id);
+}
+
+// Deletes a specific card at the given index
+function deleteCard(index, id) {
+    let team = JSON.parse(sessionStorage.getItem("team"));
+    team["team members"].splice(Number(index), 1);
     sessionStorage.setItem("team", JSON.stringify(team));
     showTeamMembers(id);
 }
