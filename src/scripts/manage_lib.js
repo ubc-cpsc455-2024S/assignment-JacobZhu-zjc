@@ -96,7 +96,8 @@ function deleteAll(id) {
 }
 
 // Restores the starting teammates in sessionStorage
-function resetSession() {
+function resetSession(id) {
     sessionStorage.removeItem("team");
     initializeTeam();
+    showTeamMembers(id);
 }
