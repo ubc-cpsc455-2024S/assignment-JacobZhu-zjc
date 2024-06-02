@@ -1,10 +1,10 @@
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import ManagerPage from './pages/ManagerPage';
-import AboutPage from './pages/AboutPage';
+import HomePage from './home/HomePage';
+import ManagerPage from './manage/ManagerPage';
+import AboutPage from './about/AboutPage';
 
 // Setup for single-page application using BrowserRouter
-function App() {
+const App = () => {
   return (
     <Router>
       <Routes>
