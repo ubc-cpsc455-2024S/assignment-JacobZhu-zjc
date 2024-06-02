@@ -5,9 +5,9 @@ import "./navbar.css"
 const NavBar = () => {
     // Objects storing the names and absolute paths to each subpage
     const pages = [
-        {"pageName": "Home", "destination": "/"},
+        {"pageName": "Home",        "destination": "/"},
         {"pageName": "Manage Team", "destination": "/manage/"},
-        {"pageName": "About Me", "destination": "/about/"}
+        {"pageName": "About Me",    "destination": "/about/"}
     ];
 
     // Iterating through the list of pages and creating a button for each element
