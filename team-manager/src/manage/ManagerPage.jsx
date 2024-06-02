@@ -1,9 +1,15 @@
+import {useEffect} from 'react';
 import NavBar from "../common/NavBar.jsx"
-import "../styles/general.css"
-import "../styles/input_form.css"
-import "../styles/team_display.css"
+import "../common/general.css"
+import "../input_form.css"
+import "../common/team_display.css"
 
 const ManagerPage = () => {
+	// Setting the title of the page
+	useEffect(() => {
+		document.title = "Manage Teams";
+	}, []);
+
 	return (
 		<>
 		<NavBar />

@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import NavBar from "../common/NavBar.jsx"
 import OuterSpacer from "../common/OuterSpacer.jsx"
-import "../styles/general.css"
+import "../common/general.css"
 
 // React component for the "About Me" page
 const AboutPage = () => {
