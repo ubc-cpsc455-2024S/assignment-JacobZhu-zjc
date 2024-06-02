@@ -109,4 +109,4 @@ function addDeleteButtons(id) {
     }
 }
 
-export {showTeamMembers, hideTeamMembers, getBackgroundColour}
+export {showTeamMembers, hideTeamMembers, getBackgroundColour, getTextColour}
