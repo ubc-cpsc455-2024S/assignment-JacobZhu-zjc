@@ -1,4 +1,4 @@
-import NavBar from "../common/Navbar.jsx"
+import NavBar from "../common/NavBar.jsx"
 import "../styles/general.css"
 import "../styles/team_display.css"
 
