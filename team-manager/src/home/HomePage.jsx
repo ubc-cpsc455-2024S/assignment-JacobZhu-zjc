@@ -29,7 +29,7 @@ const HomePage = () => {
 			<h3>Your Team:</h3>
 			<button onClick={() => {setVisibility(true)}}>Show</button>
 			<button onClick={() => {setVisibility(false)}}>Hide</button>
-			{<TeamDisplay cardsVisible={cardsVisible} origin={"HomePage"}/>}
+			{<TeamDisplay cardsVisible={cardsVisible} addDeleteButtons={false}/>}
 		</OuterSpacer>
 		</>
 	);

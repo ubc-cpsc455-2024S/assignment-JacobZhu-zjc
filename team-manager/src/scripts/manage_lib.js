@@ -1,5 +1,5 @@
 import initializeTeam from "./setup";
-import {showTeamMembers, getBackgroundColour, getTextColour} from "./image_lib";
+import {getBackgroundColour, getTextColour} from "./image_lib";
 
 // Function for creating a teammate
 async function createMember(id) {
@@ -24,7 +24,6 @@ async function createMember(id) {
     });
     sessionStorage.setItem("team", JSON.stringify(team));
     clearInputs();
-    showTeamMembers(id);
 }
 
 // Function to check form validity before attempting to create a new teammate or update the preview
@@ -149,22 +148,19 @@ function deleteAll(id) {
     let team = JSON.parse(sessionStorage.getItem("team"));
     team["team members"] = [];
     sessionStorage.setItem("team", JSON.stringify(team));
-    showTeamMembers(id);
 }
 
 // Deletes a specific card at the given index
-function deleteCard(index, id) {
+function deleteCard(index) {
     let team = JSON.parse(sessionStorage.getItem("team"));
     team["team members"].splice(Number(index), 1);
     sessionStorage.setItem("team", JSON.stringify(team));
-    showTeamMembers(id);
 }
 
 // Restores the starting teammates in sessionStorage
 async function resetSession(id) {
     sessionStorage.removeItem("team");
     await initializeTeam();
-    showTeamMembers(id);
 }
 
 export {createMember, updatePreview, deleteAll, deleteCard, resetSession}

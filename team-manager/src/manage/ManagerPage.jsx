@@ -15,10 +15,13 @@ const ManagerPage = () => {
 	return (
 		<>
 		<NavBar />
-		<div>
-			<h1>Manager Page</h1>
-			<p>Manage your team on this page.</p>
-		</div>
+		<div id="menu">
+            <div className="left_div">
+			</div>
+            
+            <div className="right_div">
+			</div>
+        </div>
 		</>
 	);
 }
