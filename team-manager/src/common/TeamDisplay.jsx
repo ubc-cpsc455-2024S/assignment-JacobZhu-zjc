@@ -1,6 +1,5 @@
 import "./teamDisplay.css"
 import {getTextColour} from "../scripts/image_lib"
-import {deleteCard} from "../scripts/manage_lib"
 
 // React component for displaying team cards in a flex box
 const TeamDisplay = ({cardsVisible, addDeleteButtons}) => {
@@ -37,15 +36,30 @@ const TeamCard = ({member, addDelete, index}) => {
         <>
         <div className="team_card" style={{backgroundColor: "rgb(" + r + "," + g + "," + b + ")", color: getTextColour(member.avgColour)}}>
             {/* Adding delete buttons if specified */}
-            {addDelete ? <button className="delete_card_button" onClick={() => deleteCard()} id={index}>&#x2715;</button> : <></>}
+            {addDelete ? (<DeleteButton index={index} />) : <></>}
             {/* Adding the rest of the card */}
             <strong>{member.name}</strong>
             <p>{member.description}</p><br/>
             Age: {member.age} <br/><br/>
-            {member.image === "" ? <em>No image included</em> : <img src={member.image}/>}
+            {member.imageLink === "" ? <em>No image included</em> : <img src={member.imageLink}/>}
         </div>
         </>
     )
 }
 
+// React component for individual delete buttons
+const DeleteButton = ({index}) => {
+    // Helper function to delete a specific card at the given index in sessionStorage
+    const deleteCard = (index) => {
+        let team = JSON.parse(sessionStorage.getItem("team"));
+        team["team members"].splice(Number(index), 1);
+        sessionStorage.setItem("team", JSON.stringify(team));
+    }
+    
+    return (
+        <button className="delete_card_button" onClick={() => deleteCard()} id={index}>&#x2715;</button>
+    );
+}
+
 export default TeamDisplay
+export {TeamCard}
