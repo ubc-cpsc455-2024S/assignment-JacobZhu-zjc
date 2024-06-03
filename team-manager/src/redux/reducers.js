@@ -7,9 +7,9 @@ const initialState = {
             "age": 20,
             "imageLink": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Lince_ib%C3%A9rico_%28Lynx_pardinus%29%2C_Almuradiel%2C_Ciudad_Real%2C_Espa%C3%B1a%2C_2021-12-19%2C_DD_07.jpg/1024px-Lince_ib%C3%A9rico_%28Lynx_pardinus%29%2C_Almuradiel%2C_Ciudad_Real%2C_Espa%C3%B1a%2C_2021-12-19%2C_DD_07.jpg",
             "avgColour": {
-                "r": 255,
-                "g": 255,
-                "b": 255
+                "r": 123,
+                "g": 108,
+                "b": 81
             }
         },
         {
@@ -18,9 +18,9 @@ const initialState = {
             "age": 5,
             "imageLink": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Cynomys_ludovicianus_GNP_21.jpg/1024px-Cynomys_ludovicianus_GNP_21.jpg",
             "avgColour": {
-                "r": 255,
-                "g": 255,
-                "b": 255
+                "r": 141,
+                "g": 132,
+                "b": 129
             }
         },
         {
@@ -29,9 +29,9 @@ const initialState = {
             "age": 8,
             "imageLink": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Red_Panda_%2824986761703%29.jpg",
             "avgColour": {
-                "r": 255,
-                "g": 255,
-                "b": 255
+                "r": 94,
+                "g": 94,
+                "b": 84
             }
         },
         {
@@ -40,9 +40,9 @@ const initialState = {
             "age": 14,
             "imageLink": "https://upload.wikimedia.org/wikipedia/commons/d/df/Geoffroy%27s_tamarin_%28Saguinus_geoffroyi%29_2.jpg",
             "avgColour": {
-                "r": 255,
-                "g": 255,
-                "b": 255
+                "r": 114,
+                "g": 118,
+                "b": 81
             }
         },
         {
@@ -51,9 +51,9 @@ const initialState = {
             "age": 3,
             "imageLink": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Erinaceus_europaeus_%28Linnaeus%2C_1758%29.jpg",
             "avgColour": {
-                "r": 255,
-                "g": 255,
-                "b": 255
+                "r": 129,
+                "g": 135,
+                "b": 77
             }
         }
     ]

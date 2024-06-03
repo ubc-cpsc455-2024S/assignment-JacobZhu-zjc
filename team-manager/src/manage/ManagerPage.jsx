@@ -8,7 +8,6 @@ import {addMember, emptyTeam, resetTeam} from '../redux/actions.js';
 import "../common/general.css"
 import "./inputForm.css"
 
-
 // React component for the team management page
 const ManagerPage = () => {
 	const dispatch = useDispatch();
