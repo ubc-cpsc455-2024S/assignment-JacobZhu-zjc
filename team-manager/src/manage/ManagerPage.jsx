@@ -50,7 +50,7 @@ const ManagerPage = () => {
 	// Helper function to empty the array of team members in sessionStorage
 	const deleteAll = () => {
 		let team = JSON.parse(sessionStorage.getItem("team"));
-		team["team members"] = [];
+		team["teamMembers"] = [];
 		sessionStorage.setItem("team", JSON.stringify(team));
 	}
 
@@ -109,7 +109,7 @@ const NewMemberForm = ({currentCard, updateCard}) => {
 	
 		// Creating the new teammate object and adding it to sessionStorage
 		let team = JSON.parse(sessionStorage.getItem("team"));
-		team["team members"].push(currentCard);
+		team["teamMembers"].push(currentCard);
 		sessionStorage.setItem("team", JSON.stringify(team));
 		clearInputs();
 	}

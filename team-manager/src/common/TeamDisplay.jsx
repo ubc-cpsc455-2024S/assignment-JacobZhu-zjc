@@ -10,7 +10,7 @@ const TeamDisplay = ({cardsVisible, addDeleteButtons}) => {
     }
 
     // Another base case, if there are no cards in the system
-    const team = JSON.parse(sessionStorage.getItem("team"))["team members"];
+    const team = JSON.parse(sessionStorage.getItem("team"))["teamMembers"];
     if (team.length === 0) { 
         return (
             <div className="flex_container">
@@ -54,7 +54,7 @@ const DeleteButton = ({index}) => {
     // Helper function to delete a specific card at the given index in sessionStorage
     const deleteCard = () => {
         let team = JSON.parse(sessionStorage.getItem("team"));
-        team["team members"].splice(Number(index), 1);
+        team["teamMembers"].splice(Number(index), 1);
         sessionStorage.setItem("team", JSON.stringify(team));
     }
     

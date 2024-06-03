@@ -1,7 +1,5 @@
-import {getBackgroundColour} from "./image_lib";
-
-// Initial team initialization JSON - pictures taken from https://en.wikipedia.org/wiki/Wikipedia:Featured_pictures/Animals/Mammals
-const initialTeam = `{
+// Default initial Redux state
+const initialState = {
     "teamMembers": [
         {
             "name": "Iberian Lynx",
@@ -59,27 +57,29 @@ const initialTeam = `{
             }
         }
     ]
-}`;
+}
 
-// Asynchronous function to set the initial team members, if they haven't already been set
-async function initializeTeam() {
-    if (sessionStorage.getItem("team") === null) {
-        let team = JSON.parse(initialTeam);
-        let teamMembers = team["teamMembers"];
-
-        // Calculating the average colours of the provided images and retroactively updating the avgColour field (initially white)
-        let promiseArr = [];
-        for (const member of teamMembers) {
-            promiseArr.push(getBackgroundColour(member.imageLink));
-        }
-        const avgColours = await Promise.all(promiseArr);
-
-        for (let i = 0; i < teamMembers.length; i++) {
-            teamMembers[i].avgColour = avgColours[i];
-        }
-
-        sessionStorage.setItem("team", JSON.stringify(team));
+// Reducer for Redux state
+function rootReducer(state = initialState, action) {
+    switch (action.type) {
+        case 'ADD':
+            return {
+                ...state,
+                "teamMembers": [
+                    ...state["teamMembers"],
+                    action["newMember"]
+                ]
+            };
+        case 'DELETE':
+            return {
+                ...state,
+                "teamMembers": [
+                    state["teamMembers"].slice(Number(action["index"]), 1)
+                ]
+            };
+        default:
+            return state;
     }
 }
 
-export default initializeTeam
+export default rootReducer
