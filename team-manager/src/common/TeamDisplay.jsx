@@ -1,16 +1,19 @@
-import "./teamDisplay.css"
+import {useSelector, useDispatch} from "react-redux";
 import {getTextColour} from "../scripts/image_lib"
 import DetailedView from "./DetailedView";
+import {deleteMember} from "../redux/actions";
+import "./teamDisplay.css"
 
 // React component for displaying team cards in a flex box
 const TeamDisplay = ({cardsVisible, addDeleteButtons}) => {
+    const team = useSelector((state) => state["teamMembers"]);
+
     // Base case, if the container is set to be hidden
     if (!cardsVisible) {
         return (<div className="flex_container"></div>);
     }
 
     // Another base case, if there are no cards in the system
-    const team = JSON.parse(sessionStorage.getItem("team"))["teamMembers"];
     if (team.length === 0) { 
         return (
             <div className="flex_container">
@@ -51,15 +54,10 @@ const TeamCard = ({member, addDelete, index, addDialog}) => {
 
 // React component for individual delete buttons
 const DeleteButton = ({index}) => {
-    // Helper function to delete a specific card at the given index in sessionStorage
-    const deleteCard = () => {
-        let team = JSON.parse(sessionStorage.getItem("team"));
-        team["teamMembers"].splice(Number(index), 1);
-        sessionStorage.setItem("team", JSON.stringify(team));
-    }
+    const dispatch = useDispatch();
     
     return (
-        <button className="delete_card_button" onClick={() => deleteCard()}>&#x2715;</button>
+        <button className="delete_card_button" onClick={() => dispatch(deleteMember(index))}>&#x2715;</button>
     );
 }
 

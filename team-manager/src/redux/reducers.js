@@ -1,4 +1,4 @@
-// Default initial Redux state
+// Default initial Redux state - pictures taken from https://en.wikipedia.org/wiki/Wikipedia:Featured_pictures/Animals/Mammals
 const initialState = {
     "teamMembers": [
         {
@@ -62,7 +62,7 @@ const initialState = {
 // Reducer for Redux state
 function rootReducer(state = initialState, action) {
     switch (action.type) {
-        case 'ADD':
+        case "ADD":
             return {
                 ...state,
                 "teamMembers": [
@@ -70,13 +70,23 @@ function rootReducer(state = initialState, action) {
                     action["newMember"]
                 ]
             };
-        case 'DELETE':
+        case "DELETE":
             return {
                 ...state,
-                "teamMembers": [
-                    state["teamMembers"].slice(Number(action["index"]), 1)
+                teamMembers: [
+                    ...state["teamMembers"].slice(0, action["index"]), 
+                    ...state["teamMembers"].slice(action["index"] + 1)
                 ]
             };
+        case "EMPTY":
+            return {
+                ...state,
+                teamMembers: []
+            }
+        case "RESET":
+            return {
+                ...initialState
+            }
         default:
             return state;
     }

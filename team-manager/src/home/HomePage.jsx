@@ -2,16 +2,14 @@ import {useEffect, useState} from 'react';
 import NavBar from "../common/NavBar.jsx"
 import OuterSpacer from "../common/OuterSpacer.jsx";
 import TeamDisplay from "../common/TeamDisplay.jsx"
-import initializeTeam from "../scripts/setup.js"
 import "../common/general.css"
 import { Link } from 'react-router-dom';
 
 // React component for the homepage
 const HomePage = () => {
-	// Setting the title of the page, and initializing teams from the starter JSON string
+	// Setting the title of the page
 	useEffect(() => {
 		document.title = "HomePage";
-        initializeTeam();
 	}, []);
 
 	// Setting the card display to initially be non-visible

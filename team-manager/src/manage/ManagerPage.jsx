@@ -1,18 +1,21 @@
 import {useEffect, useState} from 'react';
+import {useDispatch} from 'react-redux';
 import NavBar from "../common/NavBar.jsx"
 import OuterSpacer from '../common/OuterSpacer.jsx';
-import TeamDisplay, { TeamCard } from '../common/TeamDisplay.jsx';
-import initializeTeam from "../scripts/setup.js"
+import TeamDisplay, {TeamCard} from '../common/TeamDisplay.jsx';
 import {getBackgroundColour} from '../scripts/image_lib.js';
+import {addMember, emptyTeam, resetTeam} from '../redux/actions.js';
 import "../common/general.css"
 import "./inputForm.css"
 
+
 // React component for the team management page
 const ManagerPage = () => {
-	// Setting the title of the page, and initializing teams if necessary from the starter JSON string
+	const dispatch = useDispatch();
+
+	// Setting the title of the page
 	useEffect(() => {
 		document.title = "Manage Teams";
-		initializeTeam();
 	}, []);
 
 	// Setting the card display to initially be non-visible
@@ -47,19 +50,6 @@ const ManagerPage = () => {
 		updateAvgColour();
 	}, [newCard.imageLink]);
 
-	// Helper function to empty the array of team members in sessionStorage
-	const deleteAll = () => {
-		let team = JSON.parse(sessionStorage.getItem("team"));
-		team["teamMembers"] = [];
-		sessionStorage.setItem("team", JSON.stringify(team));
-	}
-
-	// Helper function to restore the starting teammates in sessionStorage
-	const resetSession = async () => {
-		sessionStorage.removeItem("team");
-		await initializeTeam();
-	}
-
 	return (
 		<>
 		<NavBar />
@@ -73,8 +63,8 @@ const ManagerPage = () => {
 
 			<button onClick={() => {setVisibility(true)}}>Show</button>
 			<button onClick={() => {setVisibility(false)}}>Hide</button>
-			<button onClick={() => resetSession()} className="delete_button">Reset session data</button>
-			<button onClick={() => deleteAll()} className="delete_button">Delete all team members</button>
+			<button onClick={() => dispatch(resetTeam())} className="delete_button">Reset session data</button>
+			<button onClick={() => dispatch(emptyTeam())} className="delete_button">Delete all team members</button>
 			{<TeamDisplay cardsVisible={cardsVisible} addDeleteButtons={true}/>}
 		</OuterSpacer>
 		</>
@@ -83,6 +73,8 @@ const ManagerPage = () => {
 
 // React component for the form used to create new team members
 const NewMemberForm = ({currentCard, updateCard}) => {
+	const dispatch = useDispatch();
+
 	// Helper function to reset the values of all the inputs
 	const clearInputs = () => {
 		updateCard({
@@ -92,13 +84,6 @@ const NewMemberForm = ({currentCard, updateCard}) => {
 			"imageLink": "",
 			"avgColour": {"r": 255, "g": 255, "b": 255}
 		});
-
-		const preview = document.getElementById("preview_div");
-		preview.innerHTML = "";
-		preview.removeAttribute("class");
-		preview.removeAttribute("style");
-		
-		document.getElementById("error_message").innerHTML = "";
 	}
 
 	// Helper function to create a new team member
@@ -107,10 +92,8 @@ const NewMemberForm = ({currentCard, updateCard}) => {
 			return;
 		}
 	
-		// Creating the new teammate object and adding it to sessionStorage
-		let team = JSON.parse(sessionStorage.getItem("team"));
-		team["teamMembers"].push(currentCard);
-		sessionStorage.setItem("team", JSON.stringify(team));
+		// Creating the new teammate object and adding it to Redux state
+		dispatch(addMember(currentCard));
 		clearInputs();
 	}
 
@@ -132,7 +115,7 @@ const NewMemberForm = ({currentCard, updateCard}) => {
 
 // React component for an error message indicating which fields are missing
 const ErrorMessage = ({currentCard}) => {
-	// TODO: add confirmation button and queue in sessionStorage for incomplete teammmates?
+	// TODO: add confirmation button and queue in Redux state for incomplete teammmates?
 	const hasDescription = currentCard["description"] !== "";
 	const hasAge = currentCard["age"] !== "";
 	const hasImage = currentCard["imageLink"] !== "";
