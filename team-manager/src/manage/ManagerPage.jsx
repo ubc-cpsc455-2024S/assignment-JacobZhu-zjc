@@ -215,7 +215,7 @@ const CardPreview = ({cardInfo}) => {
 		const hasImage = cardInfo["imageLink"] !== "";
 
 		// Base case, if all fields are completed
-		if (checkValidity() && (hasDescription || hasAge || hasImage)) {
+		if (checkValidity() || hasDescription || hasAge || hasImage) {
 			return true;
 		}
 		return false;
