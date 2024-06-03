@@ -164,7 +164,7 @@ const NameInput = ({currentCard, updateCard}) => {
 	return (
 		<>
 			<label htmlFor="new_member_name">Name:</label><br/>
-			<input type="text" value={currentCard["name"]} onChange={updateName} required /><br/>
+			<input type="text" value={currentCard["name"]} onChange={updateName} id="new_member_name" required /><br/>
 		</>
 	);
 }
@@ -183,7 +183,7 @@ const DescriptionInput = ({currentCard, updateCard}) => {
 	return (
 		<>
 			<label htmlFor="new_member_description">Description:</label><br/>
-			<textarea value={currentCard["description"]} onChange={updateDescription} cols="40" rows="5"></textarea><br/>
+			<textarea value={currentCard["description"]} onChange={updateDescription} id="new_member_description" cols="40" rows="5"></textarea><br/>
 		</>
 	);
 }
@@ -202,7 +202,7 @@ const AgeInput = ({currentCard, updateCard}) => {
 	return (
 		<>
 			<label htmlFor="new_member_age">Age:</label><br/>
-			<input type="number" step="1" min="0" value={currentCard["age"]} onChange={updateAge} /><br/>
+			<input type="number" step="1" min="0" value={currentCard["age"]} onChange={updateAge} id="new_member_age" /><br/>
 		</>
 	);
 }
@@ -219,7 +219,7 @@ const ImageLinkInput = ({currentCard, updateCard}) => {
 	return (
 		<>
 			<label htmlFor="new_member_image_link">Image Link:</label><br/>
-			<input type="text" value={currentCard["imageLink"]} onChange={updateImageLink} /><br/>
+			<input type="text" value={currentCard["imageLink"]} onChange={updateImageLink} id="new_member_image_link" /><br/>
 		</>
 	);
 }
