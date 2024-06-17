@@ -59,7 +59,7 @@ const ManagerPage = () => {
 			<h1>Manage Teams</h1>
 
 			<div id="menu">
-				<NewMemberForm currentCard={newCard} updateCard={updateCard} />
+				<NewMemberForm currentCard={newCard} updateCard={updateCard} addOption={true} />
 				<CardPreview cardInfo={newCard} />
 			</div>
 

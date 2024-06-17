@@ -6,7 +6,7 @@ import {addMember} from "../../redux/actions";
 import "../inputForm.css";
 
 // React component for the form used to create new team members
-const NewMemberForm = ({currentCard, updateCard}) => {
+const NewMemberForm = ({currentCard, updateCard, addOption}) => {
 	const dispatch = useDispatch();
 
 	// Helper function to reset the values of all the inputs
@@ -39,7 +39,7 @@ const NewMemberForm = ({currentCard, updateCard}) => {
 					<DescriptionInput currentCard={currentCard} updateCard={updateCard} />
                     <AgeInput currentCard={currentCard} updateCard={updateCard} />
                     <ImageLinkInput currentCard={currentCard} updateCard={updateCard} />
-                    <input type="button" value="Add Member" onClick={() => createMember()} />
+                    {addOption ? <input type="button" value="Add Member" onClick={() => createMember()} /> : <></>}
                     <input type="button" value="Clear" onClick={() => clearInputs()} /><br/>
                 </form>
                 <ErrorMessage currentCard={currentCard} />

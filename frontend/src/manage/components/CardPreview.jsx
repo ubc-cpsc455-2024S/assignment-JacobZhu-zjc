@@ -20,7 +20,7 @@ const CardPreview = ({cardInfo}) => {
 	return (
 		<div className="right_div">
 			<h3>Card Preview:</h3>
-			{shouldDisplay() ? (<TeamCard member={cardInfo} addDelete={false} index={undefined} />) : (<></>)}
+			{shouldDisplay() ? (<TeamCard member={cardInfo} addDelete={false} index={undefined} addDialog={false} />) : (<></>)}
 		</div>
 	);
 };
