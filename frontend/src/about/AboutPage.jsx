@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect} from "react";
 import NavBar from "../common/NavBar.jsx"
 import OuterSpacer from "../common/OuterSpacer.jsx"
 import "../common/general.css"

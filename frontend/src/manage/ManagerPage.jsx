@@ -1,10 +1,10 @@
-import {useEffect, useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {useEffect, useState} from "react";
+import {useDispatch} from "react-redux";
 import NavBar from "../common/NavBar.jsx"
-import OuterSpacer from '../common/OuterSpacer.jsx';
-import TeamDisplay, {TeamCard} from '../common/TeamDisplay.jsx';
-import {getBackgroundColour} from '../scripts/image_lib.js';
-import {addMember, emptyTeam, resetTeam} from '../redux/actions.js';
+import OuterSpacer from "../common/OuterSpacer.jsx";
+import TeamDisplay, {TeamCard} from "../common/TeamDisplay.jsx";
+import {getBackgroundColour} from "../scripts/image_lib.js";
+import {addMember, emptyTeam, resetTeam} from "../redux/actions.js";
 import "../common/general.css"
 import "./inputForm.css"
 
@@ -26,7 +26,8 @@ const ManagerPage = () => {
 		"description": "",
 		"age": "",
 		"imageLink": "",
-		"avgColour": {"r": 255, "g": 255, "b": 255}
+		"avgColour": {"r": 255, "g": 255, "b": 255},
+		"id": "-1"
 	});
 
 	// Asynchronously updating the average colour field of the card when the image link is changed
@@ -231,7 +232,7 @@ const CardPreview = ({cardInfo}) => {
 
 // Function to check form validity before attempting to create a new teammate or update the preview
 const checkValidity = () => {
-	const form = document.getElementById('new_member_form');
+	const form = document.getElementById("new_member_form");
 	if (!form) {
 		return false;
 	} else if (form.checkValidity()) {

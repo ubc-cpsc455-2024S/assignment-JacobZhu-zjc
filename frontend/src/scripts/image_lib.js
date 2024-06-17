@@ -21,8 +21,8 @@ async function getBackgroundColour(imageURL) {
 // Helper function to calculate the average colour of an image, given the corresponding HTML element
 // With references from https://www.geeksforgeeks.org/how-to-find-an-average-color-of-an-image-using-javascript/
 function getAverageColour(img) {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
     canvas.width = img.naturalWidth;
     canvas.height = img.naturalHeight;
 

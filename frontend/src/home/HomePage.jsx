@@ -1,15 +1,15 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 import NavBar from "../common/NavBar.jsx"
 import OuterSpacer from "../common/OuterSpacer.jsx";
 import TeamDisplay from "../common/TeamDisplay.jsx"
 import "../common/general.css"
-import { Link } from 'react-router-dom';
 
 // React component for the homepage
 const HomePage = () => {
 	// Setting the title of the page
 	useEffect(() => {
-		document.title = "HomePage";
+		document.title = "Home Page";
 	}, []);
 
 	// Setting the card display to initially be non-visible
