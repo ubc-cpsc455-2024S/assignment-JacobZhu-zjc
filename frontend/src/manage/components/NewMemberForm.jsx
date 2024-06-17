@@ -34,7 +34,7 @@ const NewMemberForm = ({currentCard, updateCard, addOption}) => {
 	return (
 		<div className="left_div">
 			<h3>Add a New Team Member!</h3>
-                <form id="new_member_form">
+                <form className="new_member_form">
                     <NameInput currentCard={currentCard} updateCard={updateCard} />
 					<DescriptionInput currentCard={currentCard} updateCard={updateCard} />
                     <AgeInput currentCard={currentCard} updateCard={updateCard} />

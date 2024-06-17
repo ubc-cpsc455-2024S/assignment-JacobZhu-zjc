@@ -1,12 +1,14 @@
 // Helper function to check form validity before attempting to create a new teammate or update the preview
 const checkValidity = () => {
-	const form = document.getElementById("new_member_form");
-	if (!form) {
+	const forms = document.getElementsByClassName("new_member_form");
+    const activeForm = [...forms].filter(form => document.hasFocus(form))[0];
+    console.log(forms);
+	if (forms.length === 0 || !activeForm) {
 		return false;
-	} else if (form.checkValidity()) {
+	} else if (activeForm.checkValidity()) {
         return true;
     } else {
-        form.reportValidity();
+        activeForm.reportValidity();
         return false;
     }
 };
