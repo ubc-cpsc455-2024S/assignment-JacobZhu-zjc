@@ -51,7 +51,7 @@ const TeamCard = ({member, addDelete, addDialog}) => {
             <strong>{member.name}</strong>
             <p>{member.description}</p><br/>
             Age: {member.age} <br/><br/>
-            {member.imageLink === "" ? <em>No image included</em> : <img src={member.imageLink} />}
+            {member.imageLink === "" ? <><em>No image included</em><br/></> : <img src={member.imageLink} />}
             {addDialog ? <DetailedView member={member} /> : <></>}
         </div>
     )

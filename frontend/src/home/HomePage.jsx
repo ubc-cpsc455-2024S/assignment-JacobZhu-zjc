@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import NavBar from "../common/NavBar.jsx"
-import OuterSpacer from "../common/OuterSpacer.jsx";
-import TeamDisplay from "../common/TeamDisplay.jsx"
-import "../common/general.css"
+import NavBar from "../components/NavBar.jsx"
+import OuterSpacer from "../components/OuterSpacer.jsx";
+import TeamDisplay from "../components/TeamDisplay.jsx"
+import "../components/general.css"
 
 // React component for the homepage
 const HomePage = () => {
