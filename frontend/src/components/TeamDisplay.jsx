@@ -40,6 +40,7 @@ const TeamDisplay = ({cardsVisible, addDeleteButtons, startingPage = 1}) => {
                     <TeamCard key={index} member={member} addDelete={addDeleteButtons} addDialog={true} />
                 ))}
             </div>
+            {/* FIXME: disable buttons and reset currentPage to 1 after resetting the team or deleting all team members -> rerender this component possibly? */}
             {(currentPage > 1) ? <button onClick={() => setCurrentPage(currentPage - 1)}>Previous Page</button> : <button disabled>Previous Page</button>}
             {(currentPage < numPages) ? <button onClick={() => setCurrentPage(currentPage + 1)}>Next Page</button> : <button disabled>Next Page</button>}
         </>

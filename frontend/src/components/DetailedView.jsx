@@ -66,6 +66,7 @@ const DetailedView = ({member}) => {
                 {isVisible ? <>
                     <h2>Edit Member</h2>
                     <div id="display">
+                        {/* FIXME: the popup window makes the original NewMemberForm on the Manager page unfocusable, so Chrome throws an "error" of sorts */}
                         <NewMemberForm currentCard={newCard} updateCard={updateCard} addOption={false} />
                         <CardPreview cardInfo={newCard} />
                     </div>
