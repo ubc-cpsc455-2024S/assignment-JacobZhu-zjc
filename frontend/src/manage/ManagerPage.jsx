@@ -6,7 +6,7 @@ import TeamDisplay from "../components/TeamDisplay.jsx";
 import CardPreview from "./components/CardPreview.jsx";
 import NewMemberForm from "./components/NewMemberForm.jsx";
 import {getBackgroundColour} from "../scripts/image_lib.js";
-import {emptyTeam, resetTeam} from "../redux/actions.js";
+import {emptyTeam, fetchMembers, resetTeam} from "../redux/actions.js";
 import "../components/general.css"
 import "./inputForm.css"
 
@@ -52,6 +52,20 @@ const ManagerPage = () => {
 		updateAvgColour();
 	}, [newCard.imageLink]);
 
+	// Helper function to handle dispatch calls when the "Reset session data" button is pressed
+	const handleReset = () => {
+		dispatch(resetTeam());
+		dispatch(fetchMembers());
+		setVisibility(true);
+	};
+
+	// Helper function to handle dispatch calls when the "Delete all team members" button is pressed
+	const handleEmpty = () => {
+		dispatch(emptyTeam());
+		dispatch(fetchMembers());
+		setVisibility(true);
+	};
+
 	return (
 		<>
 		<NavBar />
@@ -63,11 +77,11 @@ const ManagerPage = () => {
 				<CardPreview cardInfo={newCard} />
 			</div>
 
-			<button onClick={() => {setVisibility(true)}}>Show</button>
-			<button onClick={() => {setVisibility(false)}}>Hide</button>
-			<button onClick={() => dispatch(resetTeam())} className="delete_button">Reset session data</button>
-			<button onClick={() => dispatch(emptyTeam())} className="delete_button">Delete all team members</button>
-			{<TeamDisplay cardsVisible={cardsVisible} addDeleteButtons={true}/>}
+			<button onClick={() => setVisibility(true)}>Show</button>
+			<button onClick={() => setVisibility(false)}>Hide</button>
+			<button onClick={() => handleReset()} className="delete_button">Reset session data</button>
+			<button onClick={() => handleEmpty()} className="delete_button">Delete all team members</button>
+			{<TeamDisplay cardsVisible={cardsVisible} addDeleteButtons={true} />}
 		</OuterSpacer>
 		</>
 	);

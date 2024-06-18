@@ -3,7 +3,7 @@ import {useDispatch} from "react-redux";
 import NewMemberForm from "../manage/components/NewMemberForm";
 import CardPreview from "../manage/components/CardPreview";
 import {getBackgroundColour} from "../scripts/image_lib";
-import {updateMember} from "../redux/actions";
+import {fetchMembers, updateMember} from "../redux/actions";
 import "./detailedView.css";
 
 // React component used to view a single team card in more detail, and to edit a card
@@ -56,6 +56,7 @@ const DetailedView = ({member}) => {
     // Helper function to dispatch an action to update a given member
     const handleUpdate = () => {
         dispatch(updateMember(newCard["id"], newCard));
+        dispatch(fetchMembers());
     };
 
     return (

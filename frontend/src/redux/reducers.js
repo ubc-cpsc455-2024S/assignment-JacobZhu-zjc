@@ -6,7 +6,8 @@ function rootReducer(state, action) {
         case FETCH_MEMBERS:
             return {
                 ...state,
-                teamMembers: action.payload
+                teamMembers: action.payload["teamMembers"],
+                numPages: action.payload["numPages"]
             };
         case ADD_MEMBER:
             return {
@@ -22,7 +23,7 @@ function rootReducer(state, action) {
         case DELETE_MEMBER:
             return {
                 ...state,
-                teamMembers: state["teamMembers"].filter(member => member["id"] !== action.payload)
+                teamMembers: state["teamMembers"].filter(member => member["id"] !== action.payload["id"])
             };
         case EMPTY_TEAM:
             return {

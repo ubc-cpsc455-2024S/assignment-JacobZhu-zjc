@@ -2,7 +2,7 @@ import {useDispatch} from "react-redux";
 import ErrorMessage from "./ErrorMessage.jsx";
 import {NameInput, DescriptionInput, AgeInput, ImageLinkInput} from "./Inputs.jsx";
 import {checkValidity} from "./scripts.js";
-import {addMember} from "../../redux/actions";
+import {addMember, fetchMembers} from "../../redux/actions";
 import "../inputForm.css";
 
 // React component for the form used to create new team members
@@ -28,6 +28,7 @@ const NewMemberForm = ({currentCard, updateCard, addOption}) => {
 	
 		// Creating the new teammate object and adding it to Redux state
 		dispatch(addMember(currentCard));
+		dispatch(fetchMembers());
 		clearInputs();
 	}
 

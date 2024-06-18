@@ -9,9 +9,13 @@ const DELETE_MEMBER = "DELETE_MEMBER";
 const EMPTY_TEAM = "EMPTY_TEAM";
 const RESET_TEAM = "RESET_TEAM";
 
-// Function used when getting team members from backend
-const fetchMembers = () => async dispatch => {
-    const res = await axios.get("http://localhost:3001/api/members/");
+// Function used when getting team members from backend, with pagination
+const fetchMembers = (page) => async dispatch => {
+    const res = await axios.get("http://localhost:3001/api/members",{
+        params: {
+            page: (page) ? page : 1
+        }
+    });
     dispatch({
         type: FETCH_MEMBERS,
         payload: res.data

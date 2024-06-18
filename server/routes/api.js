@@ -4,9 +4,17 @@ const router = express.Router();
 let teamMembers = require("../data/team").teamMembers;
 const initialState = require("../data/team").initialState;
 
-// GET endpoint to fetch all team members
+// GET endpoint to fetch team members on the given page, using offset-based pagination
 router.get("/members", (req, res) => {
-	res.json(teamMembers);
+	const MEMBERS_PER_PAGE = 10;
+
+	const queries = req.query;
+	const pageNumber = queries["page"];
+	const numPages = Math.max(1, Math.ceil(teamMembers.length / MEMBERS_PER_PAGE));
+	res.json({
+		teamMembers: teamMembers.slice((pageNumber - 1) * MEMBERS_PER_PAGE, pageNumber * MEMBERS_PER_PAGE),
+		numPages: numPages
+	});
 });
 
 // GET endpoint to reset team to initial members
