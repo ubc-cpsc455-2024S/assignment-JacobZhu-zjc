@@ -3,6 +3,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const apiRoutes = require("./routes/api");
+const mongoose = require("mongoose");
 
 // Initializing an instance of "express" and setting up all dependencies
 let app = express();
@@ -32,5 +33,12 @@ app.use(function (req, res, next) {
 
 // Using API routes
 app.use("/api", apiRoutes);
+
+// Connecting to the MongoDB cluster
+mongoose.connect(process.env.ATLAS_URI).then(
+    () => console.log("Successfully connected to Atlas MongoDB server!")
+).catch(
+    error => console.log("Error connecting to MongoDB Atlas server: " + error)
+);
 
 module.exports = app;
