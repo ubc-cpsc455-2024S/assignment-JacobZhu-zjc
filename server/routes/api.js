@@ -53,10 +53,10 @@ router.post("/members", async (req, res) => {
 // PUT endpoint to update a team member
 router.put("/members/:id", async (req, res) => {
 	// Updating specified member with the new values for the fields sent in the HTTP request
-	const editedMember = await memberModel.findByIdAndUpdate(req.params.id, req.body);
+	const editedMember = Object(await memberModel.findByIdAndUpdate(req.params.id, req.body));
 	if (editedMember !== null) {
 		// Responding with the updated team member
-		res.json(teamMembers[index]);
+		res.json({...editedMember["_doc"], "_id": req.params.id});
 	} else {
 		res.status(404).send("Member not found");
 	}
