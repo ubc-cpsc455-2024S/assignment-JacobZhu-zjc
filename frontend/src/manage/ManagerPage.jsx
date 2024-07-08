@@ -29,7 +29,7 @@ const ManagerPage = () => {
 		"age": "",
 		"imageLink": "",
 		"avgColour": {"r": 255, "g": 255, "b": 255},
-		"id": "-1"
+		"_id": "-1"
 	});
 
 	// Asynchronously updating the average colour field of the card when the image link is changed

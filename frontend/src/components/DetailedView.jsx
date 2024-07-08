@@ -30,7 +30,7 @@ const DetailedView = ({member}) => {
 		"age": member["age"],
 		"imageLink": member["imageLink"],
 		"avgColour": member["avgColour"],
-		"id": member["id"]
+		"_id": member["_id"]
 	});
 
     // Asynchronously updating the average colour field of the card when the image link is changed
@@ -55,7 +55,7 @@ const DetailedView = ({member}) => {
 
     // Helper function to dispatch an action to update a given member
     const handleUpdate = async () => {
-        await dispatch(updateMember(newCard["id"], newCard));
+        await dispatch(updateMember(newCard["_id"], newCard));
         await dispatch(fetchMembers());
     };
 

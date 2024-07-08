@@ -15,9 +15,7 @@ const TeamDisplay = ({cardsVisible, addDeleteButtons, startingPage = 1}) => {
 
     // Updating the state of the team in Redux every time the component loads
 	useEffect(() => {
-        async () => {
-            await dispatch(fetchMembers(currentPage));
-        }
+        dispatch(fetchMembers(currentPage));
 	}, [currentPage, dispatch]);
 
     // Base case, if the container is set to be hidden

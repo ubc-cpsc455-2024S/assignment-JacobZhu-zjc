@@ -18,12 +18,12 @@ function rootReducer(state, action) {
             return {
                 ...state,
                 // Replacing the member with the given id with the HTML response body
-                teamMembers: state["teamMembers"].map(member => (member["id"] === action.payload.id) ? action.payload : member)
+                teamMembers: state["teamMembers"].map(member => (member["_id"] === action.payload.id) ? action.payload : member)
             };
         case DELETE_MEMBER:
             return {
                 ...state,
-                teamMembers: state["teamMembers"].filter(member => member["id"] !== action.payload["id"])
+                teamMembers: state["teamMembers"].filter(member => member["_id"] !== action.payload["_id"])
             };
         case EMPTY_TEAM:
             return {
