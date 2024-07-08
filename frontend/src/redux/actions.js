@@ -16,7 +16,6 @@ const fetchMembers = (page) => async dispatch => {
             "page": (page) ? page : 1
         }
     });
-    console.log(res.data);
     dispatch({
         type: FETCH_MEMBERS,
         payload: res.data
