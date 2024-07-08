@@ -10,7 +10,7 @@ const initialState = `[
             "g": 108,
             "b": 81
         },
-        "id": "0"
+        "_id": "77caae49-2948-4be9-a2d9-121a6173ac66"
     },
     {
         "name": "Black-tailed Prairie Dog",
@@ -22,7 +22,7 @@ const initialState = `[
             "g": 132,
             "b": 129
         },
-        "id": "1"
+        "_id": "379634da-10e8-40c8-95db-23b05c78a81c"
     },
     {
         "name": "Red Panda",
@@ -34,7 +34,7 @@ const initialState = `[
             "g": 94,
             "b": 84
         },
-        "id": "2"
+        "_id": "2e7b6a3d-7ce5-4fb0-9231-7691a718b20e"
     },
     {
         "name": "Geoffroy's Tamarin",
@@ -46,7 +46,7 @@ const initialState = `[
             "g": 118,
             "b": 81
         },
-        "id": "3"
+        "_id": "6c6be23a-eb04-4a5e-b91a-6fcc435940ef"
     },
     {
         "name": "European Hedgehog",
@@ -58,11 +58,8 @@ const initialState = `[
             "g": 135,
             "b": 77
         },
-        "id": "4"
+        "_id": "4c7c19b9-3664-489b-a7c3-2d3fb2e679cb"
     }
-]`
+]`;
 
-// JS object used to store current team state
-let teamMembers = JSON.parse(initialState);
-
-module.exports = {teamMembers, initialState};
+module.exports = {initialState};
