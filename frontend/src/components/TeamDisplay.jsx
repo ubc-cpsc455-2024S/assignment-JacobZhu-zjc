@@ -15,7 +15,9 @@ const TeamDisplay = ({cardsVisible, addDeleteButtons, startingPage = 1}) => {
 
     // Updating the state of the team in Redux every time the component loads
 	useEffect(() => {
-		dispatch(fetchMembers(currentPage));
+        async () => {
+            await dispatch(fetchMembers(currentPage));
+        }
 	}, [currentPage, dispatch]);
 
     // Base case, if the container is set to be hidden
@@ -54,7 +56,7 @@ const TeamCard = ({member, addDelete, addDialog}) => {
     return (
         <div className="team_card" style={{backgroundColor: "rgb(" + r + "," + g + "," + b + ")", color: getTextColour(member.avgColour)}}>
             {/* Adding delete buttons if specified */}
-            {addDelete ? (<DeleteButton id={member["id"]} />) : <></>}
+            {addDelete ? (<DeleteButton id={member["_id"]} />) : <></>}
             {/* Adding the rest of the card */}
             <strong>{member.name}</strong>
             <p>{member.description}</p><br/>
@@ -68,9 +70,9 @@ const TeamCard = ({member, addDelete, addDialog}) => {
 // React component for individual delete buttons
 const DeleteButton = ({id}) => {
     const dispatch = useDispatch();
-    const handleDelete = () => {
-        dispatch(deleteMember(id))
-        dispatch(fetchMembers());
+    const handleDelete = async () => {
+        await dispatch(deleteMember(id));
+        await dispatch(fetchMembers());
     };
 
     return (

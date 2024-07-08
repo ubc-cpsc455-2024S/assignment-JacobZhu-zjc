@@ -54,9 +54,9 @@ const DetailedView = ({member}) => {
 	}, [newCard.imageLink]);
 
     // Helper function to dispatch an action to update a given member
-    const handleUpdate = () => {
-        dispatch(updateMember(newCard["id"], newCard));
-        dispatch(fetchMembers());
+    const handleUpdate = async () => {
+        await dispatch(updateMember(newCard["id"], newCard));
+        await dispatch(fetchMembers());
     };
 
     return (

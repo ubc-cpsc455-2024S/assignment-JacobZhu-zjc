@@ -27,8 +27,8 @@ const NewMemberForm = ({currentCard, updateCard, addOption}) => {
 		}
 	
 		// Creating the new teammate object and adding it to Redux state
-		dispatch(addMember(currentCard));
-		dispatch(fetchMembers());
+		await dispatch(addMember(currentCard));
+		await dispatch(fetchMembers());
 		clearInputs();
 	}
 

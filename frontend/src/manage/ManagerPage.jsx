@@ -53,16 +53,16 @@ const ManagerPage = () => {
 	}, [newCard.imageLink]);
 
 	// Helper function to handle dispatch calls when the "Reset session data" button is pressed
-	const handleReset = () => {
-		dispatch(resetTeam());
-		dispatch(fetchMembers());
+	const handleReset = async () => {
+		await dispatch(resetTeam());
+		await dispatch(fetchMembers());
 		setVisibility(true);
 	};
 
 	// Helper function to handle dispatch calls when the "Delete all team members" button is pressed
-	const handleEmpty = () => {
-		dispatch(emptyTeam());
-		dispatch(fetchMembers());
+	const handleEmpty = async () => {
+		await dispatch(emptyTeam());
+		await dispatch(fetchMembers());
 		setVisibility(true);
 	};
 

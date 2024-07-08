@@ -11,11 +11,12 @@ const RESET_TEAM = "RESET_TEAM";
 
 // Function used when getting team members from backend, with pagination
 const fetchMembers = (page) => async dispatch => {
-    const res = await axios.get("http://localhost:3001/api/members",{
+    const res = await axios.get("http://localhost:3001/api/members", {
         params: {
-            page: (page) ? page : 1
+            "page": (page) ? page : 1
         }
     });
+    console.log(res.data);
     dispatch({
         type: FETCH_MEMBERS,
         payload: res.data
