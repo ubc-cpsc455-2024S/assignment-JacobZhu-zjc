@@ -1,0 +1,15 @@
+button {
+    display: inline-block;
+    align-self: flex-end;
+}
+
+#display {
+    padding: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+    border-radius: 1em;
+    background-color: beige;
+    text-overflow: ellipsis;
+}
