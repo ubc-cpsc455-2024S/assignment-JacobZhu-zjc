@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Object to store allowed sites for CORS
 const cors = {
-    origins: ["https://assignment-jacobzhu-zjc-frontend.onrender.com"],
+    origins: ["https://assignment-jacobzhu-zjc-frontend.onrender.com"], // "http://localhost:5173"
     default: "https://assignment-jacobzhu-zjc-frontend.onrender.com",
 }
 
