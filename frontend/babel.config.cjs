@@ -2,8 +2,10 @@
 // ESLint incorrectly states that 'module' is undefined in this context
 /* eslint-disable no-undef */
 module.exports = {
-    presets:[
+    presets: [
         "@babel/preset-env",
-        "@babel/preset-react"
+        ["@babel/preset-react", {
+            "runtime": "automatic"
+        }]
     ]
 }

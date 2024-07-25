@@ -56,4 +56,4 @@ function getTextColour(avgColour) {
     }
 }
 
-export {getBackgroundColour, getTextColour}
+export {getBackgroundColour, getTextColour};

@@ -10,7 +10,7 @@ const EMPTY_TEAM = "EMPTY_TEAM";
 const RESET_TEAM = "RESET_TEAM";
 
 // .env variable for server URI
-const SERVER_URI = import.meta.env.VITE_SERVER_URI;
+const SERVER_URI = "https://assignment-jacobzhu-zjc.onrender.com";
 
 // Function used when getting team members from backend, with pagination
 const fetchMembers = (page) => async dispatch => {
