@@ -15,10 +15,19 @@ app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// Object to store allowed sites for CORS
+const cors = {
+    origins: [process.env.FRONTEND_URI], // "http://localhost:5173"
+    default: process.env.FRONTEND_URI,
+}
+
 // CORS middleware adapted from https://stackoverflow.com/questions/18310394/no-access-control-allow-origin-node-apache-port-issue
 app.use(function (req, res, next) {
-    // Websites we wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+    // Checking if the origin of the request comes from a site allowed to visit the backend
+    const origin = cors.origins.includes(req.header("origin").toLowerCase()) ? req.headers.origin : cors.default;
+
+    // Allowing access to websites we wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', origin);
 
     // Request methods we wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');

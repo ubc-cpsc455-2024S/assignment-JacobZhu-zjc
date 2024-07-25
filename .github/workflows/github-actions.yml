@@ -1,0 +1,28 @@
+name: Run Tests
+on:
+  pull_request:
+    branches:
+      - '**'
+  push:
+    branches:
+      - main
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      # Partial attribution to ChatGPT
+      - run: echo "This job was automatically triggered by a ${{ github.event_name }} event."
+      - name: Checkout repo code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.14'
+
+      - name: Install dependencies
+        run: cd frontend && npm install
+
+      - name: Run tests
+        run: cd frontend && npm run test
+      - run: echo "This job's status is ${{ job.status }}."

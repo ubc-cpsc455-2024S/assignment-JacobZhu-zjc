@@ -9,9 +9,12 @@ const DELETE_MEMBER = "DELETE_MEMBER";
 const EMPTY_TEAM = "EMPTY_TEAM";
 const RESET_TEAM = "RESET_TEAM";
 
+// .env variable for server URI
+const SERVER_URI = "https://assignment-jacobzhu-zjc.onrender.com";
+
 // Function used when getting team members from backend, with pagination
 const fetchMembers = (page) => async dispatch => {
-    const res = await axios.get("http://localhost:3001/api/members", {
+    const res = await axios.get(SERVER_URI + "/api/members", {
         params: {
             "page": (page) ? page : 1
         }
@@ -24,7 +27,7 @@ const fetchMembers = (page) => async dispatch => {
 
 // Function used when adding a new member to the team
 const addMember = (member) => async dispatch => {
-    const res = await axios.post("http://localhost:3001/api/members", member);
+    const res = await axios.post(SERVER_URI + "/api/members", member);
     dispatch({
         type: ADD_MEMBER,
         payload: res.data
@@ -33,7 +36,7 @@ const addMember = (member) => async dispatch => {
 
 // Function used when updating an existing member"s data
 const updateMember = (id, member) => async dispatch => {
-    const res = await axios.put(`http://localhost:3001/api/members/${id}`, member);
+    const res = await axios.put(SERVER_URI + `/api/members/${id}`, member);
     dispatch({
         type: UPDATE_MEMBER,
         payload: res.data
@@ -42,7 +45,7 @@ const updateMember = (id, member) => async dispatch => {
 
 // Function used when removing a member from the team
 const deleteMember = (id) => async dispatch => {
-    await axios.delete(`http://localhost:3001/api/members/${id}`);
+    await axios.delete(SERVER_URI + `/api/members/${id}`);
     dispatch({
         type: DELETE_MEMBER,
         payload: id
@@ -51,7 +54,7 @@ const deleteMember = (id) => async dispatch => {
 
 // Function to empty the array of team members
 const emptyTeam = () => async dispatch => {
-    await axios.get("http://localhost:3001/api/members/empty");
+    await axios.get(SERVER_URI + "/api/members/empty");
     dispatch({
         type: EMPTY_TEAM,
     });
@@ -59,7 +62,7 @@ const emptyTeam = () => async dispatch => {
 
 // Function to restore the starting teammates
 const resetTeam = () => async dispatch => {
-    const res = await axios.get("http://localhost:3001/api/members/reset");
+    const res = await axios.get(SERVER_URI + "/api/members/reset");
     dispatch({
         type: RESET_TEAM,
         payload: res.data
