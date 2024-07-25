@@ -17,8 +17,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Object to store allowed sites for CORS
 const cors = {
-    origins: ["https://assignment-jacobzhu-zjc-frontend.onrender.com"], // "http://localhost:5173"
-    default: "https://assignment-jacobzhu-zjc-frontend.onrender.com",
+    origins: [process.env.FRONTEND_URI], // "http://localhost:5173"
+    default: process.env.FRONTEND_URI,
 }
 
 // CORS middleware adapted from https://stackoverflow.com/questions/18310394/no-access-control-allow-origin-node-apache-port-issue

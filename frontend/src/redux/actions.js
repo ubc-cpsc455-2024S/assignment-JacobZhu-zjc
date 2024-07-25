@@ -2,13 +2,15 @@
 import axios from "axios";
 
 // Labels for each action, used in the Redux reducer
-const SERVER_URI = "https://assignment-jacobzhu-zjc.onrender.com";
 const FETCH_MEMBERS = "FETCH_MEMBERS";
 const ADD_MEMBER = "ADD_MEMBER";
 const UPDATE_MEMBER = "UPDATE_MEMBER";
 const DELETE_MEMBER = "DELETE_MEMBER";
 const EMPTY_TEAM = "EMPTY_TEAM";
 const RESET_TEAM = "RESET_TEAM";
+
+// .env variable for server URI
+const SERVER_URI = import.meta.env.VITE_SERVER_URI;
 
 // Function used when getting team members from backend, with pagination
 const fetchMembers = (page) => async dispatch => {
