@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Object to store allowed sites for CORS
 const cors = {
-    origins: [process.env.FRONTEND_URI], // "http://localhost:5173"
+    origins: [process.env.FRONTEND_URI, "http://localhost:5173"],
     default: process.env.FRONTEND_URI,
 }
 
